@@ -1,0 +1,59 @@
+﻿@using UniversityCommunity.Business.Session
+<div class="header_top" id="home">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("CommunityList","Community")">
+                        Topluluklar
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("AnnouncementList","Announcement")">
+                        Duyurular
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                @if (SessionContext.GetInt("UserId") != 0)
+                {
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("AdminCommunityEventList","Admin")">
+                            Etkinlik Listesi
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    if (SessionContext.GetInt("UserTypeId") == 1)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AdminCommunityList","Community")">
+                                Topluluk Listesi
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("AdminAnnouncementList","Announcement")">
+                                Duyuru Listesi
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("UserList","Admin")">
+                                User Listesi
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </nav>
+</div>
